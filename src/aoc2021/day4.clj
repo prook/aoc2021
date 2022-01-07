@@ -44,7 +44,7 @@
         boards (->> board-lines
                     (remove str/blank?)
                     (partition 5)
-                    (mapv (juxt parse-board (constantly :no-bingo-yet) (constantly nil))))]
+                    (mapv (juxt parse-board (constantly nil))))]
     [drawn-numbers boards]))
 
 (defn bingo?
@@ -76,39 +76,38 @@
   (let [board (map (fn [[board-number mark?]]
                      [board-number (or mark? (= board-number drawn-number))])
                    board)]
-       (cond
-         (= state :bingo!) [board :already-bingoed nil]
-         (= state :already-bingoed) [board :already-bingoed nil]
-         (bingo? board) [board :bingo! (* drawn-number (board-score board))]
-         :else [board :no-bingo-yet nil])))
+    [board (when (bingo? board)
+             (* drawn-number (board-score board)))]))
 
 (defn draw-seq
   [drawn-numbers boards]
   (when drawn-numbers
     (lazy-seq
       (let [[drawn-number & drawn-numbers] drawn-numbers
-            boards (map #(mark-number % drawn-number) boards)]
+            boards (->> boards
+                        (remove second)
+                        (map #(mark-number % drawn-number)))]
         (conj (draw-seq drawn-numbers boards) boards)))))
 
 (defn part1
   ([] (part1 input))
   ([input]
-   (let [[drawn-numbers boards] (parse-input input)
-         [_ _ score] (->> (draw-seq drawn-numbers boards)
-                          (mapcat concat)
-                          (filter (comp #{:bingo!} second))
-                          (first))]
-     score)))
+   (let [[drawn-numbers boards] (parse-input input)]
+     (->> (draw-seq drawn-numbers boards)
+          (mapcat concat)
+          (filter second)
+          (first)
+          (second)))))
 
 (defn part2
   ([] (part2 input))
   ([input]
-   (let [[drawn-numbers boards] (parse-input input)
-         [_ _ score] (->> (draw-seq drawn-numbers boards)
-                          (mapcat concat)
-                          (filter (comp #{:bingo!} second))
-                          (last))]
-     score)))
+   (let [[drawn-numbers boards] (parse-input input)]
+     (->> (draw-seq drawn-numbers boards)
+          (mapcat concat)
+          (filter second)
+          (last)
+          (second)))))
 
 (results
   "Day 4"
