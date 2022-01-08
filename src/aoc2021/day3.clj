@@ -1,6 +1,5 @@
 (ns aoc2021.day3
-  (:require [clojure.java.io :as io]
-            [aoc2021.util :refer [results]]))
+  (:require [clojure.java.io :as io]))
 
 (defn char->bit [c] (- (byte c) 48))
 (defn string->bits [s] (mapv char->bit s))
@@ -69,8 +68,3 @@
   (let [oxygen-gen-rating (bits->long (search input most-common-or-1))
         co2-scrubber-rating (bits->long (search input least-common-or-0))]
     (* oxygen-gen-rating co2-scrubber-rating)))
-
-(results
-  "Day 3"
-  (part1)
-  (part2))

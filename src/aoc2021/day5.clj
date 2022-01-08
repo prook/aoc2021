@@ -1,6 +1,5 @@
 (ns aoc2021.day5
-  (:require [clojure.string :as str]
-            [aoc2021.util :refer [results]]))
+  (:require [clojure.string :as str]))
 
 (def example (slurp "input/day5.example"))
 (def input (slurp "input/day5"))
@@ -77,8 +76,3 @@
           (reduce mark-terrain terrain)
           (filter #(<= 2 %))
           (count)))))
-
-(results
-  "Day 5"
-  (part1)
-  (part2))

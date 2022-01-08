@@ -1,6 +1,5 @@
 (ns aoc2021.day4
-  (:require [clojure.string :as str]
-            [aoc2021.util :refer [results]]))
+  (:require [clojure.string :as str]))
 
 (def example
   "7,4,9,5,11,17,23,2,0,14,21,24,10,16,13,6,15,25,12,22,18,20,8,19,3,26,1
@@ -108,8 +107,3 @@
           (filter second)
           (last)
           (second)))))
-
-(results
-  "Day 4"
-  (part1)
-  (part2))

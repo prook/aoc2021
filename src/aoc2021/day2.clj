@@ -1,7 +1,6 @@
 (ns aoc2021.day2
   (:require [clojure.java.io :as io]
-            [clojure.string :as str]
-            [aoc2021.util :refer [results]]))
+            [clojure.string :as str]))
 
 (defn parse-line
   [s]
@@ -48,8 +47,3 @@
                                           :depth    0}
                                          movements)]
     (* position depth)))
-
-
-(results "Day 1"
-         (part1)
-         (part2))

@@ -1,6 +1,5 @@
 (ns aoc2021.day1
-  (:require [clojure.java.io :as io]
-            [aoc2021.util :refer [results]]))
+  (:require [clojure.java.io :as io]))
 
 (defn part1
   []
@@ -23,7 +22,3 @@
     (->> (map - xs (next xs))
          (filter neg?)
          (count))))
-
-(results "Day 1"
-         (part1)
-         (part2))
