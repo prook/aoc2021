@@ -4,6 +4,8 @@
             [aoc2021.day3 :as d3]
             [aoc2021.day4 :as d4]
             [aoc2021.day5 :as d5]
+            [aoc2021.day6 :as d6]
+            [aoc2021.day7 :as d7]
             [aoc2021.util :refer [results]]))
 
 
@@ -22,4 +24,10 @@
            (d4/part2))
   (results "Day 5"
            (d5/part1)
-           (d5/part2)))
+           (d5/part2))
+  (results "Day 6"
+           (d6/part1)
+           (d6/part2))
+  (results "Day 7"
+           (d7/part1)
+           (d7/part2)))
