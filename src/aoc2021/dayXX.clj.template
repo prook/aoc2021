@@ -1,0 +1,18 @@
+(ns aoc2021.day14
+  (:require [clojure.string :as str]))
+
+(set! *warn-on-reflection* true)
+
+(def example (slurp "input/day14.example"))
+(def input (slurp "input/day14"))
+
+(defn parse
+  [input])
+
+(defn part1
+  ([] (part1 input))
+  ([input]))
+
+(defn part2
+  ([] (part2 input))
+  ([input]))
