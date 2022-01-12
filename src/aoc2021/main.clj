@@ -14,6 +14,7 @@
             [aoc2021.day13 :as d13]
             [aoc2021.day14 :as d14]
             [aoc2021.day15 :as d15]
+            [aoc2021.day16 :as d16]
             [aoc2021.util :refer [results]]))
 
 
@@ -62,4 +63,7 @@
            (d14/part2))
   (results "Day 15"
            (d15/part1)
-           (d15/part2)))
+           (d15/part2))
+  (results "Day 16"
+           (d16/part1)
+           (d16/part2)))
